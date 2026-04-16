@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: leave-management-service
+spec:
+  type: NodePort      # Use NodePort for local testing
+  selector:
+    app: leave-app    # This MUST match the labels in your deployment.yaml
+  ports:
+    - protocol: TCP
+      port: 80        # The port you'll use in the cluster
+      targetPort: 8080 # The port your app runs on (inside the container)
+      nodePort: 30007 # The port you can use in your browser (range 30000-32767)

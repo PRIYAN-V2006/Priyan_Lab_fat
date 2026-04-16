@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leave-container
-        image: your-dockerhub-user/leave-app:latest # Replace with your Docker Hub ID
+        image: priyanappu30/leave-app:latest # Replace with your Docker Hub ID
         ports:
         - containerPort: 8080
 ---
