@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leave-management-deploy
+  labels:
+    app: leave-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: leave-app
+  template:
+    metadata:
+      labels:
+        app: leave-app
+    spec:
+      containers:
+      - name: leave-container
+        image: your-dockerhub-user/leave-app:latest # Replace with your Docker Hub ID
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: leave-management-service
+spec:
+  selector:
+    app: leave-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
